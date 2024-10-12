@@ -1,0 +1,54 @@
+{
+    "rooms": {
+        "101": {
+            "room_type": "single",
+            "price": 100.0,
+            "status": "vacant"
+        },
+        "102": {
+            "room_type": "single",
+            "price": 100.0,
+            "status": "occupied"
+        },
+        "103": {
+            "room_type": "single",
+            "price": 100.0,
+            "status": "under maintenance"
+        },
+        "104": {
+            "room_type": "double",
+            "price": 200.20,
+            "status": "vacant"
+        },
+        "105": {
+            "room_type": "double",
+            "price": 200.0,
+            "status": "vacant"
+        },
+        "106": {
+            "room_type": "double",
+            "price": 250.0,
+            "status": "occupied"
+        },
+        "107": {
+            "room_type": "single",
+            "price": 100.0,
+            "status": "occupied"
+        },
+        "108": {
+            "room_type": "double",
+            "price": 150.0,
+            "status": "vacant"
+        },
+        "109": {
+            "room_type": "suite",
+            "price": 350.0,
+            "status": "vacant"
+        },
+        "201": {
+            "room_type": "suite",
+            "price": 600.0,
+            "status": "occupied"
+        }
+    }
+}

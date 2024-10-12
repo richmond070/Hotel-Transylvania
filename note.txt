@@ -1,0 +1,48 @@
+Room(room_number, room_type, price, status )
+
+ def __init__(self) -> None:
+        self.rooms = []
+
+    # Create room
+    def createRoom (self, room_number: int, room_type: str, price: float, status: str ):
+        self.room_details = {}
+        room_details = self.room_details[room_number] = Room(room_number, room_type, price, status )
+        self.rooms.append(room_details)
+        print(f"A {room_type} has been added!!")
+
+
+
+- it is a booking system 
+- the guest should be able to check for available rooms 
+- 
+
+
+available_rooms = [room for room in self.rooms.values() if room.status == "vacant"]
+        if available_rooms:
+            print("Available rooms:")
+            for room in available_rooms:
+                print(f"Room {room.room_number}: {room.room_type}, Price: {room.price}")
+                return available_rooms
+        else: 
+            print("No available rooms. ")
+            return []
+
+
+class Booking: 
+    def __init__(self, room: Room, booking_id: int, guest: Guest, checkIn: datetime, checkOut: datetime) -> None:
+        self.booking_id = booking_id
+        self.room = room
+        self.guest = guest
+        self.checkIn = checkIn
+        self.checkOut = checkOut
+
+
+
+# Method to display all rooms 
+    def display_rooms (self):
+        if not self.rooms:
+            print("No rooms available")
+        else:
+            for room_number, room in self.rooms.items():
+                print(f"Room {room_number} is a {room.room_type} bed room that goes for {room.price} it is currently {room.status}")
+        return self.rooms
