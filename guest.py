@@ -4,11 +4,12 @@
 - view all reservations made by a guest
 """
 
-from user import User
+from user import *
 
 class Guest (User):
-    def __init__(self, user_id: str, name: str, role: str, password: str, email: str):
-        super().__init__(user_id, name, role, password)
-        self.email = email
+    def __init__(self, user_id: str, name: str,  password: str, email: str):
+        super().__init__(user_id, name, email, password, role = "guest")
+        
 
+        
 

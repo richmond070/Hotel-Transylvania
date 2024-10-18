@@ -1,0 +1,148 @@
+{
+    "rooms": {
+        "101": {
+            "room_type": "single",
+            "price": 100.0,
+            "status": "vacant"
+        },
+        "102": {
+            "room_type": "single",
+            "price": 100.0,
+            "status": "occupied"
+        },
+        "103": {
+            "room_type": "single",
+            "price": 100.0,
+            "status": "under maintenance"
+        },
+        "104": {
+            "room_type": "double",
+            "price": 200.20,
+            "status": "vacant"
+        },
+        "105": {
+            "room_type": "double",
+            "price": 200.0,
+            "status": "vacant"
+        },
+        "106": {
+            "room_type": "double",
+            "price": 250.0,
+            "status": "occupied"
+        },
+        "107": {
+            "room_type": "single",
+            "price": 100.0,
+            "status": "occupied"
+        },
+        "108": {
+            "room_type": "double",
+            "price": 150.0,
+            "status": "vacant"
+        },
+        "109": {
+            "room_type": "suite",
+            "price": 350.0,
+            "status": "vacant"
+        },
+        "201": {
+            "room_type": "suite",
+            "price": 600.0,
+            "status": "occupied"
+        }
+    }, 
+
+    "users": {
+        "1": {
+            "name": "Alice Johnson",
+            "password": "securepassword123",
+            "email": "alice.johnson@example.com",
+            "role": "staff"
+        },
+        "2": {
+            "name": "Bob Smith",
+            "password": "password456",
+            "email": "bob.smith@example.com",
+            "role": "guest"
+        },
+        "3": {
+            "name": "Charlie Brown",
+            "password": "mypassword789",
+            "email": "charlie.brown@example.com",
+            "role": "staff"
+        },
+        "4": {
+            "name": "Diana Prince",
+            "password": "wonderwoman123",
+            "email": "diana.prince@example.com",
+            "role": "guest"
+        },
+        "5": {
+            "name": "Ethan Hunt",
+            "password": "missionimpossible456",
+            "email": "ethan.hunt@example.com",
+            "role": "staff"
+        },
+        "6": {
+            "name": "Fiona Gallagher",
+            "password": "shameless789",
+            "email": "fiona.gallagher@example.com",
+            "role": "guest"
+        },
+        "7": {
+            "name": "George Lucas",
+            "password": "starwars456",
+            "email": "george.lucas@example.com",
+            "role": "guest"
+        },
+        "8": {
+            "name": "Hannah Montana",
+            "password": "partyintheusa123",
+            "email": "hannah.montana@example.com",
+            "role": "guest"
+        },
+        "9": {
+            "name": "Ian Malcolm",
+            "password": "jurassicpark789",
+            "email": "ian.malcolm@example.com",
+            "role": "guest"
+        },
+        "10": {
+            "name": "Jane Doe",
+            "password": "janedoe123",
+            "email": "jane.doe@example.com",
+            "role": "guest"
+        },
+        "11": {
+           "name": "Admin User",
+           "password": "adminpassword123",
+           "email": "admin.user@example.com",
+           "role": "admin"
+        }
+    },
+
+    "staff": {
+        "1": {
+            "position": "Manager"
+        },
+        "3": {
+            "position": "Receptionist"
+        },
+        "5": {
+            "position": "Accountant"
+        },
+        "11": {
+            "position": "System Administrator"
+        }
+    },
+
+    "guests": {
+        "2": {},
+        "4": {},
+        "6": {},
+        "7": {},
+        "8": {},
+        "9": {},
+        "10": {}
+    }   
+}

@@ -1,31 +1,76 @@
-Room(room_number, room_type, price, status )
+class ReservationSystem:
+    def __init__(self) -> None:
+        self.reservations = {} # dictionary to store booking_id
+        self.next_reservation_id = 1 # Auto-increment reservation ID
+        #self.room_service = room_service
+        self.users = dict(data.get('users', {}))  # Convert to regular dict
+        self.rooms = dict(data.get('rooms', {}))  # Convert to regular dict
 
- def __init__(self) -> None:
-        self.rooms = []
+    """ Method to add available rooms
+    - First find the rooms 
+    - Then if their is any room that is vacant the room should be added to the list of available rooms
+    """
+    def available_rooms (self):
+        # List to store vacant rooms
+        vacant_rooms = []
 
-    # Create room
-    def createRoom (self, room_number: int, room_type: str, price: float, status: str ):
-        self.room_details = {}
-        room_details = self.room_details[room_number] = Room(room_number, room_type, price, status )
-        self.rooms.append(room_details)
-        print(f"A {room_type} has been added!!")
-
-
-
-- it is a booking system 
-- the guest should be able to check for available rooms 
-- 
-
-
-available_rooms = [room for room in self.rooms.values() if room.status == "vacant"]
-        if available_rooms:
-            print("Available rooms:")
-            for room in available_rooms:
-                print(f"Room {room.room_number}: {room.room_type}, Price: {room.price}")
-                return available_rooms
+        # Checking if rooms is not NOne before accessing .items()
+        if self.rooms is not None: 
+            #filter and collect only vacant rooms
+            for room_number, room in self.rooms:
+                if room['status'] == 'vacant':
+                    vacant_rooms.append((room_number, room))
+                    # Check if there are any vacant rooms to display
+            if vacant_rooms:
+                for room_number, room in vacant_rooms:
+                    print(f"Room {room_number} is a {room['room_type']} bed room that goes for {room['price']} it is currently {room['status']}")
+            else:
+            # No vacant rooms available
+                print("No vacant rooms available.")
         else: 
-            print("No available rooms. ")
-            return []
+            print(f"No rooms available")
+
+
+
+    def reserved_room(self, user_id: int):
+        """ How is a guest going to be able to reserver a room
+       - find the guest_id: user_id
+       - if the user exist we return the name of the user
+       - find the room type
+       - pass available room_numbers that are of the type and are vacant into a list 
+       - and pass the first vacant room on the list  to the user and remove it from the list
+       - store user and room in a dictionary
+       """
+                
+        print(f"Received User ID: {user_id}")
+        
+        # Find the user
+        user = self.users.get(str(user_id))
+        
+        if user and user['role'] == 'guest':
+            user_name = user['name']
+            print(f"User {user_name} (ID: {user_id}) found.")
+            
+            # Find an available room
+            available_rooms = [room_id for room_id, room in self.rooms.items() if room['status'] == 'vacant']
+            
+            if available_rooms:
+                assigned_room = available_rooms[0]
+                # Update room status
+                self.rooms[assigned_room]['status'] = 'occupied'
+                
+                # Store the reservation
+                self.reservations[user_id] = assigned_room
+                
+                print(f"Room {assigned_room} has been reserved for {user_name}.")
+            else:
+                print("No available rooms.")
+        else:
+            print(f"User ID {user_id} is not a valid guest.")
+
+
+
+
 
 
 class Booking: 
@@ -46,3 +91,116 @@ class Booking:
             for room_number, room in self.rooms.items():
                 print(f"Room {room_number} is a {room.room_type} bed room that goes for {room.price} it is currently {room.status}")
         return self.rooms
+
+
+
+
+    def load_rooms_from_json(self, file_path):
+        try:
+            with open(file_path, 'r') as file:
+                data = json.load(file)
+                # Convert each dictionary to a Room object
+                for room_number, room_data in data.get('rooms', {}).items():
+                    self.rooms[int(room_number)] = Room(
+                        room_number=int(room_number),
+                        room_type=room_data['room_type'],
+                        price=float(room_data['price']),
+                        status=room_data['status']
+                    )
+            print("Rooms loaded from Json file successfully:")
+        except FileNotFoundError:
+            print(f"THe file {file_path} was not found")
+        except json.JSONDecodeError:
+            print("Error decoding JSON data")  
+
+
+def load_json(file_path):
+    with open(file_path, 'r') as json_file:
+        data = json.load(json_file)
+    return data
+
+
+      for user_id, user in users:
+            if user_id not in users:
+                print(f"User {user_id} does not exist")
+            return False
+
+            if user['role'] == "guest":
+                pass
+
+
+                        if user_id not in users:
+            print(f"user not found!!")
+            return False
+        elif users['role'] == "guest":
+            print("user found")
+            return True
+        else:
+            print("User is a staff")\
+
+
+
+
+        # To get the user_id and append it into the user_list
+        for user_id, users in user:
+            if users['role'] == 'guest':
+                user_list.append(user_id)
+
+        
+        user_id = user_id
+        if user_id in user_list:
+            index = user_list.index(user_id)
+            print(f"{user_id} is found at index {index}")
+            print(f"The item is: {user_list[index]}")
+        else: 
+            print(f"ID: {user_id} not in the list")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    def reserved_room (self,  user_id: int ):
+        """ How is a guest going to be able to reserver a room
+       - find the guest_id: user_id
+       - if the user exist we return the name of the user
+       - find the room type
+       - pass available room_numbers that are of the type and are vacant into a list 
+       - and pass the first vacant room on the list  to the user and remove it from the list
+       - store user and room in a dictionary
+       """
+        print(f"Received User ID: {user_id}")
+        available_rooms = [] # to store available rooms of type 
+        guest_list = [] # to store the user_id in a list
+        user = self.users
+        rooms = available_rooms
+        
+        # To get the user_id and append it into the user_list
+        for user_id, users in user:
+            if users['role'] == 'guest':
+                guest_list.append(int(user_id))
+        print("Guest List:", guest_list)
+        print("Searching for User ID:", user_id)
+
+        if user_id in guest_list:
+            index = guest_list.index(user_id)
+            print(f"{user_id} is found at index {index}")
+        else:
+            print(f"{user_id} is not in the list of guests")
+
+    
