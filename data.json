@@ -1,0 +1,200 @@
+{
+    "rooms": {
+        "101": {
+            "room_type": "single",
+            "price": 100.0,
+            "status": "vacant"
+        },
+        "102": {
+            "room_type": "single",
+            "price": 100.0,
+            "status": "occupied"
+        },
+        "103": {
+            "room_type": "single",
+            "price": 100.0,
+            "status": "under maintenance"
+        },
+        "104": {
+            "room_type": "double",
+            "price": 200.20,
+            "status": "vacant"
+        },
+        "105": {
+            "room_type": "double",
+            "price": 200.0,
+            "status": "vacant"
+        },
+        "106": {
+            "room_type": "double",
+            "price": 250.0,
+            "status": "occupied"
+        },
+        "107": {
+            "room_type": "single",
+            "price": 100.0,
+            "status": "occupied"
+        },
+        "108": {
+            "room_type": "double",
+            "price": 150.0,
+            "status": "vacant"
+        },
+        "109": {
+            "room_type": "suite",
+            "price": 350.0,
+            "status": "vacant"
+        },
+        "201": {
+            "room_type": "suite",
+            "price": 600.0,
+            "status": "occupied"
+        }
+    }, 
+
+    "users": {
+        "1": {
+            "name": "Alice Johnson",
+            "password": "securepassword123",
+            "email": "alice.johnson@example.com",
+            "role": "staff"
+        },
+        "2": {
+            "name": "Bob Smith",
+            "password": "password456",
+            "email": "bob.smith@example.com",
+            "role": "guest"
+        },
+        "3": {
+            "name": "Charlie Brown",
+            "password": "mypassword789",
+            "email": "charlie.brown@example.com",
+            "role": "staff"
+        },
+        "4": {
+            "name": "Diana Prince",
+            "password": "wonderwoman123",
+            "email": "diana.prince@example.com",
+            "role": "guest"
+        },
+        "5": {
+            "name": "Ethan Hunt",
+            "password": "missionimpossible456",
+            "email": "ethan.hunt@example.com",
+            "role": "staff"
+        },
+        "6": {
+            "name": "Fiona Gallagher",
+            "password": "shameless789",
+            "email": "fiona.gallagher@example.com",
+            "role": "guest"
+        },
+        "7": {
+            "name": "George Lucas",
+            "password": "starwars456",
+            "email": "george.lucas@example.com",
+            "role": "guest"
+        },
+        "8": {
+            "name": "Hannah Montana",
+            "password": "partyintheusa123",
+            "email": "hannah.montana@example.com",
+            "role": "guest"
+        },
+        "9": {
+            "name": "Ian Malcolm",
+            "password": "jurassicpark789",
+            "email": "ian.malcolm@example.com",
+            "role": "guest"
+        },
+        "10": {
+            "name": "Jane Doe",
+            "password": "janedoe123",
+            "email": "jane.doe@example.com",
+            "role": "guest"
+        },
+        "11": {
+           "name": "Admin User",
+           "password": "adminpassword123",
+           "email": "admin.user@example.com",
+           "role": "admin"
+        }
+    },
+
+    "staff": {
+        "1": {
+            "position": "Manager"
+        },
+        "3": {
+            "position": "Receptionist"
+        },
+        "5": {
+            "position": "Accountant"
+        },
+        "11": {
+            "position": "System Administrator"
+        }
+    },
+
+    "guests": {
+        "2": {
+            "checkedIn": "True"
+        },
+        "4": {
+            "checkedIn": "True"
+        },
+        "6": {
+            "checkedIn": "True"
+        },
+        "7": {
+            "checkedIn": "True"
+        },
+        "8": {
+            "checkedIn": "False"
+        },
+        "9": {
+            "checkedIn": "False"
+        },
+        "10": {
+            "checkedIn": "True"
+        }
+    },
+    
+    "reservations": {
+        "1": {
+            "user_id": 4,
+            "room_number": 104,
+            "checkedIn": "2024-10-25"
+        },
+        "2":{
+            "user_id": 6,
+            "room_number": 105,
+            "checkedIn": "2024-04-25"
+        },
+        "3": {
+            "user_id": 7,
+            "room_number": 108,
+            "checkedIn": "2024-01-2"
+        },
+        "4": {
+            "user_id": 2,
+            "room_number": 109,
+            "checkedIn": "2024-06-5"
+        },
+        "5": {
+            "user_id": 10,
+            "room_number": 101,
+            "checkedIn": "2024-10-6"
+        },
+        "6": {
+            "user_id": 10,
+            "room_number": 101,
+            "checkedIn": "2024-10-6"
+        },
+        "7":{
+            "user_id": 4,
+            "room_number": 101,
+            "checkedIn": "2024-10-26"
+        }
+    }
+}
