@@ -20,8 +20,6 @@ class Room:
         self.price = price
         self.status = status
 
-    def __str__(self) -> str:
-        pass
 
 
 # This class handles the create, delete and update room
@@ -57,7 +55,7 @@ class RoomService:
         # Check if room exist 
        if room_number not in self.rooms:
            print(f"Room {room_number} not found")
-           return False
+           return False 
        room = self.rooms[room_number]
 
        # Update the room status if provided

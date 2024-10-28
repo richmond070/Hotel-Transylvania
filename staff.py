@@ -9,7 +9,12 @@
 
 
 from user import User
+from json_utils import *
 
+
+#loading Json data
+file_path = "data.json"
+data = load_json(file_path)
 
 
 # Staff class 
@@ -17,6 +22,8 @@ class Staff (User):
     def __init__(self, user_id: str, name: str, password: str, role: str, position: str):
         super().__init__(user_id, name, password, role= "staff")
         self.position = position
+
+
 
 
     

@@ -204,3 +204,169 @@ def load_json(file_path):
             print(f"{user_id} is not in the list of guests")
 
     
+
+
+
+
+
+        def __init__(self):
+        self.guests = {}
+        self.users = dict(data.get('users', {})) # converting the user to a dict
+        self.rooms = dict(data.get('rooms', {})) # converting the rooms to a dict
+        self.guests = data.get('guest', {})
+        
+        for user_id, user_info in self.users.items():
+            if user_info['role'] == 'guest':
+                checkedIn = self.guests.get(user_id, {}).get('checkedIn', False)
+                self.guests[user_id] = Guest(
+                    user_id=user_id,
+                    name=user_info['name'],
+                    email=user_info['email'],
+                    password=user_info['password'],
+                    checkedIn=checkedIn
+                )
+        
+        self.rooms = dict(data.get('rooms', {}))
+
+    def get_guest_information(self):
+        guest_info = []
+        for user_id, guest in self.guests.items():
+            guest_info.append({
+                'user_id': guest.user_id,
+                'name': guest.name,
+                'email': guest.email,
+                'checkedIn': guest.checkedIn
+            })
+        print(guest_info)
+        return guest_info
+
+
+
+
+
+
+     # check if user_id is in guest dict
+        if user_id not in self.guests:
+             print(f"user {user_id} not found")
+             return False
+        user = self.guests[user_id] 
+        
+        if checkedIn:
+            if user.checkedIn is False:
+                user.checkedIn = True
+                print(f"user {user_id} was just checked in")
+            else:
+                print(f"user{user_id} has already been checked in")
+        else:
+            print(f"User {user_id} is not marked for check-in")
+
+
+
+            for user_id, booking in self.guests.items():
+                #check if the guest has any active reservations
+                if booking['checkedIn'] == True:
+                    self.reservation
+
+
+
+
+
+
+
+
+
+
+
+            # Check if the guest has any reservations made
+            for reservation_id, details in self.reservation.items():
+                # check if the user_id matches any of the user_id in the reservation table
+                if isinstance(details, dict) and details['user_id'] == user_id:
+                    print(details)
+                    print(f"""
+    Guest details:
+    Name: {user_name}
+    Email: {email}
+    - Room Number: {details['room_number']}
+    - Checked-In Date: {details['checkedIn']}
+    - Checked-In Status: {'Checked In' if check_in_status else 'Not Checked In'}
+    """)
+                    return True
+
+        return False
+
+
+
+
+
+
+
+
+
+
+sorting algo
+ # Method to find a specific user and return all their details of the user
+    def find_guest_details(self, user_id):
+        """- How to retrieve the users details
+        - get the user_id and check for it in the self.user dict and return the user details
+        - search the reservation to see if the user/ guest has any reservations made and return the details of the reservation
+        """
+
+        # Find if the ID provided matches any ID in the database
+        user = self.users.get(str(user_id))
+
+
+
+        # Check if the user has a role of guest
+        if user and user['role'] == 'guest':
+            # get the name and email of the guest
+            user_name = user['name']
+            email = user['email']
+            print(f" Name: {user_name}; email: {email} ") 
+
+            guest = self.guest_status.get(str(user_id))
+            check_in_status = guest.get('checkedIn') if guest else False
+
+            # Get all reservations for the user
+            guest_reservations = []
+            # Check if the guest has any reservations made
+            for reservation_id, details in self.reservation.items():
+                # check if the user_id matches any of the user_id in the reservation table
+                if isinstance(details, dict) and details['user_id'] == user_id:
+                    # convert checkedIN date string to datetime object for comparison
+                    checkin_date = datetime.strptime(details['checkedIn'], '%Y-%m-%d')
+                    guest_reservations.append({
+                        'reservation_id': reservation_id,
+                        'room_number': details['room_number'],
+                        'checkedIn_date': details['checkedIn'],
+                        'checkin_date_obj': checkin_date
+                    })
+            
+            if guest_reservations:
+                #sort reservations by check-in date, most recent first (reversing the list)
+                guest_reservations.sort(key= lambda x: x['checkin_date_obj'], reverse= True)
+
+                # Update guest check-in status in self.guests
+                current_date = datetime.now()
+                most_recent_reservation = guest_reservations[0]
+
+                # Set checkedIN to True only for the most recent future reservation
+                self.guests[str(user_id)] = {
+                    'checkedIn': most_recent_reservation['checkin_date_obj'] > current_date
+                }
+
+                #print all reservations
+                print(f"\nGuest Details for {user_name}:")
+                print(f"Email: {email}")
+                print("\nReservations:")
+
+                for idx, reservation in enumerate(guest_reservations, 1):
+                    is_most_recent = idx == 1
+                    print(f"""
+Reservation {idx}:
+    - Room Number: {reservation['room_number']}
+    - Check-in Date: {reservation['checkedIn_date']}
+    - Check-in Status: {'Checked In' if is_most_recent and self.guests[str(user_id)]['checkedIn'] else 'Not Checked In'}
+""")
+                return True
+            
+            return False

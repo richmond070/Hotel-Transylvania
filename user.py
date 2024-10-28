@@ -33,6 +33,7 @@ class AuthSystem :
     # Login a registered User
     def login (self, user_id: str, name: str, password:str):
         user = self.users.get(user_id)
+        print(user)
         if not user: 
             print ("User not found")
             return False
@@ -56,7 +57,8 @@ auth_system = AuthSystem()
 auth_system.register(1, "Ahmed", "ahmed@gmail.com","password123", "guest")
 auth_system.register(2, "John", "John@gmail.com","adminPass", "admin")
 
-auth_system.login(1, "guest1", "password123")
-auth_system.login(1,"guest1", "wrongPassword")
+auth_system.login(1, "Ahmed", "password123")
+auth_system.login(2, "John", "adminPass")
+#auth_system.login(1,"guest1", "wrongPassword")
 
-auth_system.display_users()
+#auth_system.display_users()

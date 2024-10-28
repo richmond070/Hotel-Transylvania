@@ -8,7 +8,7 @@
 
 
 from room import *
-from guest import *
+from guest import Guest
 from datetime import datetime
 from json_utils import *
 
@@ -39,7 +39,7 @@ class Reservation:
         self.reservation_id = reservation_id
         self.room = room
         self.guest = guest
-        self.checkIn = checkIn
+        self.checkIn_date = checkIn
         self.checkOut = checkOut
 
 
@@ -50,6 +50,7 @@ class ReservationSystem:
         self.reservations = {}  # To store reservations
         self.next_reservation_id = 1 # Auto-increment reservation ID
 
+       
     
     """ Method to find available rooms
     - First find the rooms 
@@ -80,7 +81,7 @@ class ReservationSystem:
 
     # Method to reserve a room for a guest
             
-    def reserved_room(self, user_id: int, room_type: str= None):
+    def reserved_room(self, user_id: int, room_type: str):
         """ How is a guest going to be able to reserver a room
        - find the guest_id: user_id
        - if the user exist we return the name of the user
@@ -89,22 +90,22 @@ class ReservationSystem:
        - and pass the first vacant room on the list  to the user and remove it from the list
        - store user and room in a dictionary
        """
-        print(f"Received User ID: {user_id}, Preferred Room Type: {room_type}")
+        #print(f"Received User ID: {user_id}, Preferred Room Type: {room_type}")
 
         # Find the user
         user = self.users.get(str(user_id))
         
         if user and user['role'] == 'guest':
             user_name = user['name']
-            print(f"User {user_name} (ID: {user_id}) found.")
+            print(f"Guest {user_name} requesting for a {room_type} room .")
             
            # Find the room type
             # Pass available room_numbers that are of the type and are vacant into a list
             available_rooms = [
-                room_id for room_id, room in self.rooms.items() 
+                room_number for room_number, room in self.rooms.items() 
                 if room['status'] == 'vacant' and room['room_type'].lower() == room_type.lower()
             ]
-            
+            #print(f"available_rooms: {available_rooms}")
             if available_rooms:
                 # Pass the first vacant room on the list to the user and remove it from the list
                 assigned_room = available_rooms[0]
@@ -113,19 +114,27 @@ class ReservationSystem:
                 
                 # Store user and room in the reservations dictionary with a booking ID
                 booking_id = self.next_reservation_id
+                check_in_date = datetime.now().strftime("%Y-%m-%d")
                 self.reservations[booking_id] = {
                     'user_id': user_id,
-                    'room_id': assigned_room
+                    'room_id': assigned_room,
+                    'checkedIn': check_in_date
                 }
                 self.next_reservation_id += 1  # Increment the reservation ID for the next booking
                 
-                print(f"Booking successful! Booking ID: {booking_id}")
+                #print(f"Booking successful! Booking ID: {booking_id}")
+                print(self.reservations)
                 print(f"Room {assigned_room} ({room_type}) has been reserved for {user_name}.")
-                return booking_id
+                return self.reservations
             else:
                 print(f"Sorry, no {room_type} rooms are currently available.")
         else:
             print(f"User ID {user_id} is not a valid guest.")
+
+
+    # Method to check out a guest
+    def check_out_guest(self):
+        pass
 
 
 
@@ -143,4 +152,4 @@ booking.reserved_room(6, 'double')
 booking.reserved_room(7, 'double')
 booking.reserved_room(9, 'double')
 booking.available_rooms()
-booking.checkIn_checkOut(1)
+#booking.checkIn_checkOut(1)

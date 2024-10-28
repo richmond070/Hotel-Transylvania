@@ -137,12 +137,64 @@
     },
 
     "guests": {
-        "2": {},
-        "4": {},
-        "6": {},
-        "7": {},
-        "8": {},
-        "9": {},
-        "10": {}
-    }   
+        "2": {
+            "checkedIn": "True"
+        },
+        "4": {
+            "checkedIn": "True"
+        },
+        "6": {
+            "checkedIn": "True"
+        },
+        "7": {
+            "checkedIn": "True"
+        },
+        "8": {
+            "checkedIn": "False"
+        },
+        "9": {
+            "checkedIn": "False"
+        },
+        "10": {
+            "checkedIn": "True"
+        }
+    },
+    
+    "reservations": {
+        "1": {
+            "user_id": 4,
+            "room_number": 104,
+            "checkedIn": "2024-10-25"
+        },
+        "2":{
+            "user_id": 6,
+            "room_number": 105,
+            "checkedIn": "2024-04-25"
+        },
+        "3": {
+            "user_id": 7,
+            "room_number": 108,
+            "checkedIn": "2024-01-2"
+        },
+        "4": {
+            "user_id": 2,
+            "room_number": 109,
+            "checkedIn": "2024-06-5"
+        },
+        "5": {
+            "user_id": 10,
+            "room_number": 101,
+            "checkedIn": "2024-10-6"
+        },
+        "6": {
+            "user_id": 10,
+            "room_number": 101,
+            "checkedIn": "2024-10-6"
+        },
+        "7":{
+            "user_id": 4,
+            "room_number": 101,
+            "checkedIn": "2024-10-26"
+        }
+    }
 }
